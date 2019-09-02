@@ -1,12 +1,14 @@
 # Unity Shaders Udemy Course Learning Repository
-This Repository holds all of my course notes and resource for the Udemy Course: [Shader Development from Scratch for unity with Cg taught by Penny de Byl](https://www.udemy.com/unity-shaders/).
+
+This Repository holds all of my course notes and resources for the Udemy Course: [Shader Development from Scratch for Unity with Cg taught by Penny de Byl](https://www.udemy.com/unity-shaders/).
 
 The format for the project has the following format:
+
 1) The project is broken down into Basic Shaders (mostly Surface), Vertex and Fragment Shaders, Advanced Shaders, and Imported Resources.
 2) Each Shader Section Folder will have a Shader Folder with the list of materials containing each shader in the Section Folder.
 3) The Imported Resources folder contains all textures, C# scripts, models, etc that are needed to use the shaders/materials.
 4) All shaders created from this course will fall under Holistic/[Bucket]/[Shader Name] where [Bucket] coorelates to the respective section.
-4) This README will go through the course notes on all the shader knowledge I picked up as I went along the course, and then ends with some references.
+5) This README will go through the course notes on all the shader knowledge I picked up as I went along the course, and then ends with some references.
 
 If you have any questions on how I did this, or if you have trouble viewing the content, please contact me!
 
@@ -15,21 +17,22 @@ If you have any questions on how I did this, or if you have trouble viewing the 
 Shaders are written in ShaderLab language (Cg) / High Level Shader Language (HLSL)
 
 They can be broken down into:
-(1) Properties
-(2) Processing
-(3) For inferior GPUs
+
+1) Properties
+2) Processing
+3) For inferior GPUs
 
 In the HelloShader shader we have the following properties
 
-(1) Gives you the name of the shader and the material bucket to put it in.
-(2) The properties block will allow you to provide input into your shader and how they show up in your inspector, i.e. color 
-(3) Subshader block - cg/hlsl that does the computation of your shader
-(4) CG Program block 
-(5) #pragma block - contains information on the type of shader that you are building, i.e. surface - you are building a surface.  Also contains the function that you are going to use to build the shader and the type of lighting that you intend to use.
-(6) The next block is the structure that contains the input information from the model's mesh data. i.e. uv's
-(7) Properties that you want available to your function, i.e. the color that you created earlier.
-(8) The functions that are being used to develop your output model.  i.e. SurfaceOuput - containing Albedo, Normal, Emission, Specular, Gloss, Alpha.  The output is dependent on the type of lighting that you are using.  Any of these properties can be modified in the function.
-(9) Finally you give the shader a Fallback in case the machine is not capable of running the code that you wrote.
+1) Gives you the name of the shader and the material bucket to put it in.
+2) The properties block will allow you to provide input into your shader and how they show up in your inspector, i.e. color
+3) Subshader block - cg/hlsl that does the computation of your shader
+4) CG Program block
+5) #pragma block - contains information on the type of shader that you are building, i.e. surface - you are building a surface.  Also contains the function that you are going to use to build the shader and the type of lighting that you intend to use.
+6) The next block is the structure that contains the input information from the model's mesh data. i.e. uv's
+7) Properties that you want available to your function, i.e. the color that you created earlier.
+8) The functions that are being used to develop your output model.  i.e. SurfaceOuput - containing Albedo, Normal, Emission, Specular, Gloss, Alpha.  The output is dependent on the type of lighting that you are using.  Any of these properties can be modified in the function.
+9) Finally you give the shader a Fallback in case the machine is not capable of running the code that you wrote.
 
 ## Vector Mathematics Crash Course
 
@@ -67,11 +70,13 @@ sampleCUBE : 6 textures stiched together in a uv unwrapped cube, i.e. samplerCUB
 
 Shaders have special arrays called Packed Arrays:
 
+|      |        |       |        |
+| ---- | ------ | ----- | ------ |
 | int2 | float2 | half2 | fixed2 |
 | int3 | float3 | half3 | fixed3 |
 | int4 | float4 | half4 | fixed4 |
 
-values are placed in the array with parenthesis values, i.e. fixed4 clour1 = (0,1,1,0); 
+values are placed in the array with parenthesis values, i.e. fixed4 clour1 = (0,1,1,0);
 
 can be accessed by their color or position in the array (r,g,b,a) or (x,y,x,z)
 
@@ -107,6 +112,7 @@ Colors in Shader code is between (0,1) where the color picker is between 0 and 2
 The most efficient way to store a mesh is in triangles (also referred to as a polygon).  A polygon consists of (3) (x,y,z) coordinates, and a surface normal.  Each vertex also has it's own normal.  A normal is a vector pointing 90 degrees into an angle.  They are used to determine which side of a polygon to texture and the lighting characteristics when light hits the surface.
 
 A mesh is stored as a series of arrays that make-up the surface
+
 1) Vertex Array : an array of all the points that make up the model
 2) Normal Array : makes up all of the normals for the vertices in a model.
 3) UV Array : All of the uvs textures in the model.  Defines how a texture is mapped to the polygon.
@@ -127,6 +133,7 @@ worldRefl : contains information on how to reflect an image on the surface of th
 Shader properties are how we get values from the inspector into the shader.
 
 Properties can have many different inputs including:
+
 1) Color : Provides a color picker | fixed4
 2) Range : Allows you to input a range of values | half
 3) 2D : provides a 2D texture.  This also gives you tiling and offset values which tell how many times and where to start the texture | sampler2D
@@ -138,7 +145,9 @@ Properties can have many different inputs including:
 The tex2D that is used in the surf function in the example is a built-in function that is included with ShaderLab, Cg.  You can find all of the built-in functions on Microsoft or NVIDIAs documentation.  The best way to know how these functions work though is to try them out.
 
 ## Lighting
+
 A lighting model is used to calculate the amount of light at a point on a surface.  It takes into account (3) things:
+
 1) The normal of the surface (n)
 2) The vector to the viewer of the surface (v)
 3) Vector of the light source (s)
@@ -148,7 +157,7 @@ Lambert is a light model that determines the brightness of a surface and its rel
 Normal Mapping : creating depth with a texture map.  It does this by defining a bunch of normals across a texture.  A normal map is an rgb image where each pixel defines a normal direction used for lighting the pixel.  The less blue, the more flat the pixel.  
 
 Red : 0 to 255 -> X : -1 to 1
-Green : 0 to 255 -> Y : -1 to 1 
+Green : 0 to 255 -> Y : -1 to 1
 Blue :  0 to 255 -> Z : -1 to 1
 
 This is also called bump mapping.  Visual effects, but not added geometry - this reduces cost.  Normal mapping is a form of bump mapping.
@@ -158,6 +167,7 @@ To make the indents deeper, you can use modify the x and y values.
 The world reflection property is used to pick the parts of a cubemap to map to the models emission output.
 
 There are (3) illumination models
+
 1) Flat : Simplest and least computationally intensive model.  Uses one normal to shade each polygon.
 2) Gouraud : Interpolation of normal colors across vertexes.
 3) Phong : The flat surface is made to look curved by blending the normals across the polygon. This is the default Unity illumination method.
@@ -165,6 +175,7 @@ There are (3) illumination models
 An improvement to the Phong model was made, named the Blinn-Phong (specular reflection) model.  This introduces a halfway vector (h) which reduces the need to calculate the reflection vector.  The halfway vector is the source vector plus the view vector, h = s + v.
 
 Physically-Based Rendering is a rendering model aimed at generating realistic textures.  Physically-based rendering aims to implement:
+
 1) Reflection : Drawing rays from the viewer to the material
 2) Diffusion : Examines how color and light are distributed along the surface
 3) Translucency and Transparency : How light can move through objects
@@ -174,15 +185,18 @@ Physically-Based Rendering is a rendering model aimed at generating realistic te
 7) Microsurface Scattering : Similar to bump mapping.
 
 Vertex vs Pixel Lighting
+
 1) Vertex : Incoming light is calculated at each vertex and then interpolated along the surface.
 2) Pixel : Phong-like lighting, light for each pixel is calculated.  This picks up much more accurate specular reflections, but requires more processing.
 
-## Buffers and Queueus
+## Buffers and Queues
+
 The Frame Buffer is a computer memory structure that holds the color information for each pixel on the screen.
 
 The Z Buffer holds depth information for each pixel.  The size of the Z buffer is the same as the Frame Buffer.  This tells which pixels should get rendered to the screen by comparing the Z length from the camera.  This prevents duplication of writing information to the Frame Buffer more than once.  You can prevent Z Buffer writing in a shader by adding the line, ZWrite Off.
 
 When Unity renders things, it is generally rendered front to back.  Render Queues allow you to change the order that shaders are drawn to the screen.  The default queue is:
+
 1) Background | 1000
 2) Geometry | 2000
 3) AlphaTest | 2450
@@ -192,6 +206,7 @@ When Unity renders things, it is generally rendered front to back.  Render Queue
 Tags can also be used to control what render queue your shader is in.  You can also perform math on the render queue to control additionally when the shader is drawn.
 
 Another rendering buffer in Unity is the G-Buffer.  It is used to control deferred rendering.  There are two rendering techniques that can be used:
+
 1) Forward Rendering : Geometry -> Vertex Shader -> Geometry Shader -> Fragment Shader Lighting | Frame Buffer
 In forward rendering each object follows its own render path.  For each object each light in the environment needs to be calculated.
 
@@ -199,12 +214,15 @@ In forward rendering each object follows its own render path.  For each object e
 Lighting is only calculated once we get to the G-Buffer - therefore they only happen once. Deferred Rendering cannot display transparent objects.
 
 ## Dot Product
+
 There are two ways that the dot product can be used to calculate the angle between two vectors
+
 1) ||a|| ||b|| cos (angle)
 2) a.x * b.x + a.y * b.y + a.z * b.z
 
 In Cg, the dot product can be calculated using 
-```c++
+
+```c
 dot(IN.viewDIR, o.Normal);
 ```
 
@@ -213,6 +231,7 @@ The dot product is a key factor in calculating rim lighting, outlines, and anist
 When vectors are normalized to their unit vectors, the dot product equals 1.  When they are opposite they are -1, and when they are 0 they are perpendicular.  This also applies to directions of a vector coming into a normal on a polygon.
 
 ## Rim Lighting
+
 Coloring around the edges of a model respective to a viewers location (holograms, outlines of planets).
 
 The built-in method saturate will reduce a value to be between 0 and 1.
@@ -223,12 +242,15 @@ the _frac_ function gives you the fractional part of a number.  This allows you 
 
 Using subsurface shaders does not allow you the ability to perform mesh positional operations since we are only passing world data into the mesh.
 
-## Physically-based Rendering
+## Physically-Based Rendering
+
 Unity includes (2) Physially-based shaders
+
 1) Standard - has a metallic channel, quality of the surface
 2) Standard (Specular) - has a specular channel, affects the light being cast upon the object
 
 ## Passes and Blending
+
 The alpha channel is the 4th color in the rgba color schema and represents how transparent that specific pixel is.  It also allows us to mask textures to make things such as tree leaves using billboards.
 
 A _pass_ executes one round of a shader.  You can run multiple passes within a shader.  Each pass is called a _draw call_.  The more passes you have, however, the more labor intensive your shader will be.
@@ -244,6 +266,7 @@ Backface culling clears the back side of faces on a 3D object.  The point of doi
 The stencil buffer is another mask that allows you to control what pixels make it into the scene from the frame buffer.
 
 ## Vertex / Fragment Shaders
+
 The vertex and fragment shaders give you more granular control over the rendering of a model.  i.e. modifying the vertices of a model with a shader.
 
 The Vertex shader gives you control of each vertice in a model where you can change the color or position of the vertex.
@@ -251,6 +274,7 @@ The Vertex shader gives you control of each vertice in a model where you can cha
 The fragment shader provides per pixel coloring and allows access to pixels per world position.
 
 The structure of a vertex/fragment shader looks like the following:
+
 1) Property Block
 2) Subshader Block
 3) Pass Block
@@ -259,6 +283,7 @@ The structure of a vertex/fragment shader looks like the following:
 **UnityCG.cginc provides more access to shaders.**
 
 The data that you can access with the appdata struct (located in the UnityCG.cginc) is:
+
 1) POSITION
 2) TANGENT
 3) NORMAL
@@ -271,6 +296,7 @@ The data that you can access with the appdata struct (located in the UnityCG.cgi
 **A tangent is a vector sitting at 90 degrees to the vertex normal**
 
 The V2F struct ccan contain the following properties for the fragment shader:
+
 1) SV_POSITION
 2) NORMAL
 3) TEXCOORD0
@@ -279,6 +305,7 @@ The V2F struct ccan contain the following properties for the fragment shader:
 6) COLOR
 
 The rendering queue for these shaders goes:
+
 1) struct appdata - this is in *World Space*.
 2) struct v2f - this is in *Clipping Space*.
 3) Final - this is the projected image.
@@ -290,9 +317,11 @@ The rendering queue for these shaders goes:
 A wave can be mathematically created using a sin function. The amplitude is the height of the wave, the wavelength is the distance the peak of one wave to the next, and the frequency is the number of waves in a given time.
 
 ## Volumetric Rendering
+
 _Ray Marching_ draws a set of rays from a point on the camera to a destination volume.  If the ray intersects any point inside the volume, then we say that we have hit it.  If we make it the maximum number of steps, then we draw a different color.  As far as the camera is concerned, all pixels are on a flat surface.
 
 To use Ray marching, we need to know the following:
+
 1) The cameras world position (_WorldSpaceCameraPos).
 2) The position of that point on the flat surface (i.wPos)
 3) The direction of the ray traveling into the world (ray = i.wPos - WorldspaceCameraPos)
@@ -306,6 +335,7 @@ _Value Noise_ works by interpolating between two random values.  This is similar
 BLIT : Bit Block Transfer : Used for merging bitmaps together.
 
 ## Other Resources
+
 [Book of Shaders](https://thebookofshaders.com/11/)
 
 [Value Noises and Procedural Patterns](https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/procedural-patterns-noise-part-1/introduction?url=procedural-generation-virtual-worlds/procedural-patterns-noise-part-1/introduction)
