@@ -1,4 +1,4 @@
-﻿Shader "Holistic/DotProduct" 
+﻿Shader "Holistic/Basic/DotProduct" 
 {
 	Properties{
 

@@ -1,4 +1,4 @@
-﻿Shader "Holistic/Transparent" 
+﻿Shader "Holistic/Basic/Transparent" 
 {
 	Properties{
 		_MainTex ("Texture", 2D) = "black" {}

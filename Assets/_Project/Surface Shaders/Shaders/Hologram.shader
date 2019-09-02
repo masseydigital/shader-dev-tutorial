@@ -1,4 +1,4 @@
-﻿Shader "Holistic/Hologram" 
+﻿Shader "Holistic/Basic/Hologram" 
 {
 	Properties{
 		_RimColor ("Rim Color", Color) = (0, 0.5, 0.5, 0.0)

@@ -1,4 +1,4 @@
-﻿Shader "Holistic/ToonRamp" 
+﻿Shader "Holistic/Basic/ToonRamp" 
 {
 	Properties{
 		_Colour("Colour", Color) = (1,1,1,1)

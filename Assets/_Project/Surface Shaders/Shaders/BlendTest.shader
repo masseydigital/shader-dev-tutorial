@@ -1,4 +1,4 @@
-﻿Shader "Holistic/BlendTest" 
+﻿Shader "Holistic/Basic/BlendTest" 
 {
 	Properties{
 		_MainTex ("Texture", 2D) = "black" {}

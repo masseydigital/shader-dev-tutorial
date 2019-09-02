@@ -1,4 +1,4 @@
-﻿Shader "Holistic/Ztest" 
+﻿Shader "Holistic/Basic/Ztest" 
 {
 	Properties{
 		_MainTex ("Base (RGB)", 2D) = "white" {}

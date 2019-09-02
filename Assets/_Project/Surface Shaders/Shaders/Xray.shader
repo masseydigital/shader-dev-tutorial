@@ -1,4 +1,4 @@
-﻿Shader "Holistic/Xray" 
+﻿Shader "Holistic/Basic/Xray" 
 {
 	Properties{
 		_MainTex ("Diffuse", 2D) = "white" {}

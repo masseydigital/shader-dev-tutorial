@@ -1,4 +1,4 @@
-﻿Shader "Holistic/UseProperties" 
+﻿Shader "Holistic/Basic/UseProperties" 
 {
 	Properties{
 		_myColour ("Example Colour", Color) = (1,1,1,1)

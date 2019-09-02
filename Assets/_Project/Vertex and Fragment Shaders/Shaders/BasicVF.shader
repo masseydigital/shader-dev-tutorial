@@ -1,4 +1,4 @@
-﻿Shader "Holistic/ColorVf"
+﻿Shader "Holistic/VF/ColorVf"
 {
 	SubShader
 	{

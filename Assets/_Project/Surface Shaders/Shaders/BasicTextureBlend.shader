@@ -1,4 +1,4 @@
-﻿Shader "Holistic/BasicTextureBlend" 
+﻿Shader "Holistic/Basic/BasicTextureBlend" 
 {
 	Properties{
 		_MainTex ("MainTex", 2D) = "white" {}

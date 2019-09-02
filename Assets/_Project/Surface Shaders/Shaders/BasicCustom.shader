@@ -1,4 +1,4 @@
-﻿Shader "Holistic/BasicCustom" 
+﻿Shader "Holistic/Basic/BasicCustom" 
 {
 	Properties{
 		_Colour("Colour", Color) = (1,1,1,1)

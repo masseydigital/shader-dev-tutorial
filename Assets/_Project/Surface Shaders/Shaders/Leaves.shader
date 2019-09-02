@@ -1,4 +1,4 @@
-﻿Shader "Holistic/Leaves" 
+﻿Shader "Holistic/Basic/Leaves" 
 {
 	Properties{
 		_MainTex("MainTex", 2D) = "white" {}

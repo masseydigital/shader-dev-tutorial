@@ -1,4 +1,4 @@
-﻿Shader "Holistic/PackedPractice" 
+﻿Shader "Holistic/Basic/PackedPractice" 
 {
 	Properties{
 		_myColour ("Example Colour", Color) = (1,1,1,1)

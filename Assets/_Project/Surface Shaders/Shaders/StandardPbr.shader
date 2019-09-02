@@ -1,4 +1,4 @@
-﻿Shader "Holistic/StandardPbr"
+﻿Shader "Holistic/Basic/StandardPbr"
 {
     Properties
     {
